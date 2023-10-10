@@ -3,7 +3,7 @@ const router = expressFunction.Router()
 const ProductType = require('../models/productType')
 
 // Getting all
-router.get('/', async (req, res) => {
+router.get('/get', async (req, res) => {
     try {
         const productTypes = await ProductType.find()
         res.status(200).json(productTypes);
@@ -13,13 +13,13 @@ router.get('/', async (req, res) => {
 });
 
 // Getting One
-router.get('/:id', getProductType, (req, res) => {
+router.get('/get/:id', getProductType, (req, res) => {
     res.json(res.productType);
     //res.send(res.productType.ProductType_Name)
 });
 
 // Creating One
-router.post('/', async (req, res) => {
+router.post('/create', async (req, res) => {
     const productType = new ProductType({
         ProductType_Name: req.body.ProductType_Name
     })
@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
 });
 
 // Updating One
-router.patch('/:id', getProductType, async (req, res) => {
+router.patch('/patch/:id', getProductType, async (req, res) => {
     if (req.body.ProductType_Name != null) {
         res.productType.ProductType_Name = req.body.ProductType_Name
     }
@@ -46,7 +46,7 @@ router.patch('/:id', getProductType, async (req, res) => {
 });
 
 // Deleting One
-router.delete('/:id', getProductType, async (req, res) => {
+router.delete('/delete/:id', getProductType, async (req, res) => {
     try {
         await res.productType.deleteOne()
         res.json({ message: "Deleted ProductType" })

@@ -18,11 +18,22 @@ async function run() {
     // Insert the defined document into the "haiku" collection
     const result = await coll.insertMany(doc);
     // Print the ID of the inserted document
-    console.log(`A document was inserted with the _id: ${result}`);
+    console.log(`products: okay`);
+
+    const productTypes = database.collection("product_types");
+    const doc1 = [
+        {Product_Name: "Coffee"},
+        {Product_Name: "Tea"}
+    ];
+    const result1 = await productTypes.insertMany(doc1);
+    console.log(`product_types: okay`);
+
   } finally {
      // Close the MongoDB client connection
     await client.close();
   }
+
 }
+
 // Run the function and handle any errors
 run().catch(console.dir);

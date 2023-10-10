@@ -1,12 +1,12 @@
 ### Product
-GET http://localhost:3000/products
+GET http://localhost:3000/products/get
 
 ###
 
-GET http://localhost:3000/products/6523cc8896270bbb2618b6cb
+GET http://localhost:3000/products/get/6523cc8896270bbb2618b6cb
 
 ###
-POST http://localhost:3000/products
+POST http://localhost:3000/products/create
 Content-Type: application/json
 
 {
@@ -21,31 +21,30 @@ Content-Type: application/json
 
 ### ProductType
 
-POST http://localhost:3000/productTypes
+POST http://localhost:3000/productTypes/create
 Content-Type: application/json
 
 {
-    "ProductType_Name": "Tea"
+    "ProductType_Name": "eee"
 }
 
 ###
 
-GET http://localhost:3000/productTypes
+GET http://localhost:3000/productTypes/get
 
 ###
 
-GET http://localhost:3000/productTypes/6523c71f874858dcc18e2edc
+GET http://localhost:3000/productTypes/get/6523c71f874858dcc18e2edc
 
 ###
 
-DELETE http://localhost:3000/productTypes/6523b111799e1ee07959ff46
+DELETE http://localhost:3000/productTypes/delete/6523b111799e1ee07959ff46
 
 ###
 
-PATCH http://localhost:3000/productTypes/6523b1ba799e1ee07959ff49
+PATCH http://localhost:3000/productTypes/patch/6523c71f874858dcc18e2edc
 Content-Type: application/json
 
 {
-    "ProductType_Id": 25,
-    "ProductType_Name": "Tea"
+    "ProductType_Name": "Coffee"
 }

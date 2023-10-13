@@ -10,7 +10,7 @@ POST http://localhost:3000/products/create
 Content-Type: application/json
 
 {
-    "Product_Name": "กาแฟตึง",
+    "Product_Name": "กาแฟ",
     "Product_Type": "Coffee",
     "Product_IsHot": true,
     "Product_IsCold": true,
@@ -25,7 +25,7 @@ POST http://localhost:3000/productTypes/create
 Content-Type: application/json
 
 {
-    "ProductType_Name": "eee"
+    "ProductType_Name": "Coffee"
 }
 
 ###

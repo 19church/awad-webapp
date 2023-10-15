@@ -1,39 +1,65 @@
 ### Product
 GET http://localhost:3000/products/get
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mjk5OTk5YjdiYmY0NWQzNzc4MWRmNCIsIlVzZXJfTmFtZSI6InNhaW50IiwiUGFzc3dvcmQiOiIkMmEkMTAkRmFCTjBTYVBROFVidlYydUVpS1p2dThiQ3BML1NmMmtPNlBxSTQ3SVVWQ2RMUGNjV3dhNnEiLCJpYXQiOjE2OTczNDUyOTgsImV4cCI6MTY5NzM0NTU5OH0.d0nrF5oijhx0UAQwvYC0NoryDmg77jNz1YpE39CUa7Y
-User-Role: User
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmI4NGE1YTFjNDRlZTBmMmMxYjcxMiIsIkFkbWluX05hbWUiOiJhZG1pbjEiLCJQYXNzd29yZCI6IiQyYSQxMCRud00yN0JhdkkuWmxCVlJWLnBXSUxPcEdMeEdFUzhVR3lLajBXU29nY2U2c1AudWpPTzEydSIsImlhdCI6MTY5NzM5MDI1OCwiZXhwIjoxNjk3MzkwNTU4fQ.9kyoiPPlIbWvwbFFD5XStZ7VnAac9sPu8PBC4b6LWAI
+User-Role: Admin
 
 ###
 
-GET http://localhost:3000/products/get/6523cc8896270bbb2618b6cb
+GET http://localhost:3000/products/get/652a65ef6df4f4c67e74d33d
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmI4NGE1YTFjNDRlZTBmMmMxYjcxMiIsIkFkbWluX05hbWUiOiJhZG1pbjEiLCJQYXNzd29yZCI6IiQyYSQxMCRud00yN0JhdkkuWmxCVlJWLnBXSUxPcEdMeEdFUzhVR3lLajBXU29nY2U2c1AudWpPTzEydSIsImlhdCI6MTY5NzM5MDI1OCwiZXhwIjoxNjk3MzkwNTU4fQ.9kyoiPPlIbWvwbFFD5XStZ7VnAac9sPu8PBC4b6LWAI
+User-Role: Admin
 
 
 ###
 POST http://localhost:3000/products/create
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mjk5OTk5YjdiYmY0NWQzNzc4MWRmNCIsIlVzZXJfTmFtZSI6InNhaW50IiwiUGFzc3dvcmQiOiIkMmEkMTAkRmFCTjBTYVBROFVidlYydUVpS1p2dThiQ3BML1NmMmtPNlBxSTQ3SVVWQ2RMUGNjV3dhNnEiLCJpYXQiOjE2OTczNDg5MjksImV4cCI6MTY5NzM0OTIyOX0.U7DAsIWtHRjR_6y1UuVQ2algxzOLBHbHamUHua3MvZM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmI4NGE1YTFjNDRlZTBmMmMxYjcxMiIsIkFkbWluX05hbWUiOiJhZG1pbjEiLCJQYXNzd29yZCI6IiQyYSQxMCRud00yN0JhdkkuWmxCVlJWLnBXSUxPcEdMeEdFUzhVR3lLajBXU29nY2U2c1AudWpPTzEydSIsImlhdCI6MTY5NzM5MjQ5MCwiZXhwIjoxNjk3MzkyNzkwfQ.YSa-bEnRWU25lKlmrxeSA-uIWwlTPqk3lkdVLv03BAc
 User-Role: Admin
 Content-Type: application/json
 
 {
-    "Product_Name": "asdfasd", 
-    "Product_Type": "asdf", 
+    "Product_Name": "กาทดปั่น", 
+    "Product_Type": "Coffee", 
     "Product_IsHot": false, 
-    "Product_IsCold": true, 
-    "Product_IsFrappe": false, 
-    "Product_Detail_Hot": "adsf",
+    "Product_IsCold": false, 
+    "Product_IsFrappe": true, 
+    "Product_Detail_Hot": "None",
     "Product_Price_Hot": 0,
-    "Product_Img_Hot": "asdf",
-    "Product_Detail_Cold": "asdf",
+    "Product_Img_Hot": "None",
+    "Product_Detail_Cold": "None",
+    "Product_Price_Cold": 0,
+    "Product_Img_Cold": "None",
+    "Product_Detail_Frappe": "กามู กูมา ปั่น ๆ ไม่เอาจริง",
+    "Product_Price_Frappe": 60,
+    "Product_Img_Frappe": "https://www.cafe-amazon.com/BackEnd/TempProducts/a90a2c6da837463eb5531c47aac578c0.png"
+}
+
+### Patch Product
+
+PATCH  http://localhost:3000/products/patch/652a65ef6df4f4c67e74d33d
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmI4NGE1YTFjNDRlZTBmMmMxYjcxMiIsIkFkbWluX05hbWUiOiJhZG1pbjEiLCJQYXNzd29yZCI6IiQyYSQxMCRud00yN0JhdkkuWmxCVlJWLnBXSUxPcEdMeEdFUzhVR3lLajBXU29nY2U2c1AudWpPTzEydSIsImlhdCI6MTY5NzM5MDg0OCwiZXhwIjoxNjk3MzkxMTQ4fQ.JIfO3sjkgoksClWWw0RkQ-8nLY93EgrTEzOIrIsFL4M
+User-Role: Admin
+Content-Type: application/json
+
+{
+    "Product_Name": "กามู", 
+    "Product_Type": "Coffee", 
+    "Product_IsHot": true, 
+    "Product_IsCold": true, 
+    "Product_IsFrappe": true, 
+    "Product_Detail_Hot": "กามู กูมา ร้อน ๆ ตึง ๆ",
+    "Product_Price_Hot": 40,
+    "Product_Img_Hot": "https://www.cafe-amazon.com/BackEnd/TempProducts/5e4ec4baf5004217bce8e054231234fc.png",
+    "Product_Detail_Cold": "กามู กูมา เย็น ๆ ตึง ๆ",
     "Product_Price_Cold": 50,
-    "Product_Img_Cold": "asdf",
-    "Product_Detail_Frappe": "asdf",
-    "Product_Price_Frappe": 0,
-    "Product_Img_Frappe": "asdf"
+    "Product_Img_Cold": "https://www.cafe-amazon.com/BackEnd/TempProducts/a9237db1112a4bc09be59b49988c74ba.png",
+    "Product_Detail_Frappe": "กามู กูมา ปั่น ๆ ไม่เอาจริง",
+    "Product_Price_Frappe": 60,
+    "Product_Img_Frappe": "https://www.cafe-amazon.com/BackEnd/TempProducts/a90a2c6da837463eb5531c47aac578c0.png"
 }
 
 ### ProductType
 
-POST http://localhost:3000/productTypes/create
+PATCH  http://localhost:3000/products/patch
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mjk5OTk5YjdiYmY0NWQzNzc4MWRmNCIsIlVzZXJfTmFtZSI6InNhaW50IiwiUGFzc3dvcmQiOiIkMmEkMTAkRmFCTjBTYVBROFVidlYydUVpS1p2dThiQ3BML1NmMmtPNlBxSTQ3SVVWQ2RMUGNjV3dhNnEiLCJpYXQiOjE2OTczNDQ2MDMsImV4cCI6MTY5NzM0NDkwM30.bVFrTx6unSPpozT6fKz_XuLa_-AlcZx3s08UTbcE3FM
 User-Role: Admin
 Content-Type: application/json

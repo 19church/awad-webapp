@@ -1,9 +1,11 @@
 const expressFunction = require('express')
 const router = expressFunction.Router()
 const Product = require('../models/product')
+const authorization = require('../config/authorize');
+const checkUserRole = require('../config/userrole');
 
 // Getting all
-router.get('/get', async (req, res) => {
+router.get('/get', authorization, checkUserRole('Admin', 'User'), async (req, res) => {
     try {
         const products = await Product.find()
         res.status(200).json(products);
@@ -13,12 +15,12 @@ router.get('/get', async (req, res) => {
 });
 
 // Getting One
-router.get('/get/:id', getProduct, (req, res) => {
+router.get('/get/:id', authorization, checkUserRole('Admin', 'User'), getProduct, (req, res) => {
     res.json(res.product);
 });
 
 // Creating One
-router.post('/create', async (req, res) => {
+router.post('/create', authorization, checkUserRole('Admin'), async (req, res) => {
     const product = new Product({
         Product_Name: req.body.Product_Name,
         Product_Type: req.body.Product_Type,
@@ -26,7 +28,7 @@ router.post('/create', async (req, res) => {
         Product_IsCold: req.body.Product_IsCold,
         Product_IsFrappe: req.body.Product_IsFrappe,
         Product_Detail_Hot: req.body.Product_Detail_Hot,
-        Product_Price_Hot: req.body.Product_Pridce_Hot,
+        Product_Price_Hot: req.body.Product_Price_Hot,
         Product_Img_Hot: req.body.Product_Img_Hot,
         Product_Detail_Cold: req.body.Product_Detail_Cold,
         Product_Price_Cold: req.body.Product_Price_Cold,
@@ -44,7 +46,7 @@ router.post('/create', async (req, res) => {
 });
 
 // Updating One
-router.patch('/patch/:id', getProduct, async (req, res) => {
+router.patch('/patch/:id', authorization, checkUserRole('Admin'), getProduct, async (req, res) => {
     if (req.body.Product_Name != null) {
         res.product.Product_Name = req.body.Product_Name
     }
@@ -97,7 +99,7 @@ router.patch('/patch/:id', getProduct, async (req, res) => {
 });
 
 // Deleting One
-router.delete('/delete/:id', getProduct, async (req, res) => {
+router.delete('/delete/:id', authorization, checkUserRole('Admin'), getProduct, async (req, res) => {
     try {
         await res.product.deleteOne()
         res.json({ message: "Deleted Product" })

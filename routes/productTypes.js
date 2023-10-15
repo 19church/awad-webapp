@@ -1,9 +1,11 @@
 const expressFunction = require('express')
 const router = expressFunction.Router()
 const ProductType = require('../models/productType')
+const authorization = require('../config/authorize')
+const checkUserRole = require('../config/userrole')
 
 // Getting all
-router.get('/get', async (req, res) => {
+router.get('/get', authorization, checkUserRole('Admin', 'User'), async (req, res) => {
     try {
         const productTypes = await ProductType.find()
         res.status(200).json(productTypes);
@@ -13,13 +15,13 @@ router.get('/get', async (req, res) => {
 });
 
 // Getting One
-router.get('/get/:id', getProductType, (req, res) => {
+router.get('/get/:id', authorization, checkUserRole('Admin', 'User'), getProductType, (req, res) => {
     res.json(res.productType);
     //res.send(res.productType.ProductType_Name)
 });
 
 // Creating One
-router.post('/create', async (req, res) => {
+router.post('/create', authorization, checkUserRole('Admin'), async (req, res) => {
     const productType = new ProductType({
         ProductType_Name: req.body.ProductType_Name
     })
@@ -32,7 +34,7 @@ router.post('/create', async (req, res) => {
 });
 
 // Updating One
-router.patch('/patch/:id', getProductType, async (req, res) => {
+router.patch('/patch/:id', authorization, checkUserRole('Admin'), getProductType, async (req, res) => {
     if (req.body.ProductType_Name != null) {
         res.productType.ProductType_Name = req.body.ProductType_Name
     }
@@ -46,7 +48,7 @@ router.patch('/patch/:id', getProductType, async (req, res) => {
 });
 
 // Deleting One
-router.delete('/delete/:id', getProductType, async (req, res) => {
+router.delete('/delete/:id', authorization, checkUserRole('Admin'), getProductType, async (req, res) => {
     try {
         await res.productType.deleteOne()
         res.json({ message: "Deleted ProductType" })

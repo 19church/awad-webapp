@@ -1,6 +1,6 @@
 const expressFunction = require('express')
 const router = expressFunction.Router()
-const User = require('../models/user')
+const Admin = require('../models/admin')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const key = 'MY_KEY';
@@ -24,8 +24,8 @@ const compareHash = async(plainText, hashText) => {
 
 const insertUser = (dataUser) => {
     return new Promise ((resolve, reject) => {
-        var new_user = new User({
-            User_Name: dataUser.User_Name,
+        var new_user = new Admin({
+            Admin_Name: dataUser.Admin_Name,
             Password: dataUser.Password
         });
         new_user.save().then( result => {
@@ -36,48 +36,48 @@ const insertUser = (dataUser) => {
     });
 }
 
-const findUser = (User_Name) => {
+const findUser = (Admin_Name) => {
     return new Promise((resolve, reject) => {
-        User.findOne({User_Name: User_Name}).then(data => {
+        Admin.findOne({Admin_Name: Admin_Name}).then(data => {
             if (data) {
-                resolve({id: data._id, User_Name: data.User_Name, Password: data.Password});
+                resolve({id: data._id, Admin_Name: data.Admin_Name, Password: data.Password});
             } else {
-                reject(new Error('Cannot find username!'));
+                reject(new Error('Cannot find adminname!'));
             }
         }).catch( err => {
-            reject(new Error('Cannot find username!'));
+            reject(new Error('Cannot find adminname!'));
         })
     });
 }
 
-async function getUser(req, res, next) {
-    let user
+async function getAdmin(req, res, next) {
+    let admin
     try{
-        user = await User.findById(req.params.id)
-        if (user == null) {
-            return res.status(404).json({ message: 'Cannot find user'})
+        admin = await Admin.findById(req.params.id)
+        if (admin == null) {
+            return res.status(404).json({ message: 'Cannot find admin'})
         }
     } catch (err) {
         return res.status(500).json({ message: err.message })
     }
 
-    res.user = user
+    res.admin = admin
     next()
 }
 
 router.post('/signin', async (req, res) => {
     const playload = {
-        User_Name: req.body.User_Name,
+        Admin_Name: req.body.Admin_Name,
         Password: req.body.Password
     };
 
     try {
-        const result = await findUser(playload.User_Name);
+        const result = await findUser(playload.Admin_Name);
         const loginStatus = await compareHash(playload.Password, result.Password);
 
         const status = loginStatus.status;
         const token = jwt.sign(result, key, {expiresIn: 60*5});
-        console.log(jwt.verify(token, key).User_Name);
+        console.log(jwt.verify(token, key).Admin_Name);
         if(status) {
             const token = jwt.sign(result, key, {expiresIn: 60*5});
             console.log();
@@ -94,7 +94,7 @@ router.post('/signup', async (req, res) => {
     makeHash(req.body.Password)
         .then(hashText => {
             const playload = {
-                User_Name: req.body.User_Name,
+                Admin_Name: req.body.Admin_Name,
                 Password: hashText,
             }
             insertUser(playload)

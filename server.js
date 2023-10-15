@@ -14,7 +14,7 @@ const config = {
 expressApp.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Option, Authorization');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Option, Authorization, User-Role');
     return next();
 });
 expressApp.use(expressFunction.json());
@@ -33,6 +33,7 @@ expressApp.use((req, res, next) => {
 expressApp.use('/products', require('./routes/products'))
 expressApp.use('/productTypes', require('./routes/productTypes'))
 expressApp.use('/users', require('./routes/users.js'))
+expressApp.use('/admins', require('./routes/admins.js'))
 
 expressApp.listen(3000, function() {
     console.log('Server Started')

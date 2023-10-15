@@ -1,36 +1,52 @@
 ### Product
 GET http://localhost:3000/products/get
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mjk5OTk5YjdiYmY0NWQzNzc4MWRmNCIsIlVzZXJfTmFtZSI6InNhaW50IiwiUGFzc3dvcmQiOiIkMmEkMTAkRmFCTjBTYVBROFVidlYydUVpS1p2dThiQ3BML1NmMmtPNlBxSTQ3SVVWQ2RMUGNjV3dhNnEiLCJpYXQiOjE2OTczNDUyOTgsImV4cCI6MTY5NzM0NTU5OH0.d0nrF5oijhx0UAQwvYC0NoryDmg77jNz1YpE39CUa7Y
+User-Role: User
 
 ###
 
 GET http://localhost:3000/products/get/6523cc8896270bbb2618b6cb
 
+
 ###
 POST http://localhost:3000/products/create
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mjk5OTk5YjdiYmY0NWQzNzc4MWRmNCIsIlVzZXJfTmFtZSI6InNhaW50IiwiUGFzc3dvcmQiOiIkMmEkMTAkRmFCTjBTYVBROFVidlYydUVpS1p2dThiQ3BML1NmMmtPNlBxSTQ3SVVWQ2RMUGNjV3dhNnEiLCJpYXQiOjE2OTczNDg5MjksImV4cCI6MTY5NzM0OTIyOX0.U7DAsIWtHRjR_6y1UuVQ2algxzOLBHbHamUHua3MvZM
+User-Role: Admin
 Content-Type: application/json
 
 {
-    "Product_Name": "กาแฟ",
-    "Product_Type": "Coffee",
-    "Product_IsHot": true,
-    "Product_IsCold": true,
-    "Product_IsFrappe": false,
-    "Product_Detail": "กาแฟตึงตึง",
-    "Product_Img": "https://www.cafe-amazon.com/BackEnd/TempProducts/9fc439a9db874ea3ad33cd3e04ce5aff.png"
+    "Product_Name": "asdfasd", 
+    "Product_Type": "asdf", 
+    "Product_IsHot": false, 
+    "Product_IsCold": true, 
+    "Product_IsFrappe": false, 
+    "Product_Detail_Hot": "adsf",
+    "Product_Price_Hot": 0,
+    "Product_Img_Hot": "asdf",
+    "Product_Detail_Cold": "asdf",
+    "Product_Price_Cold": 50,
+    "Product_Img_Cold": "asdf",
+    "Product_Detail_Frappe": "asdf",
+    "Product_Price_Frappe": 0,
+    "Product_Img_Frappe": "asdf"
 }
 
 ### ProductType
 
 POST http://localhost:3000/productTypes/create
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mjk5OTk5YjdiYmY0NWQzNzc4MWRmNCIsIlVzZXJfTmFtZSI6InNhaW50IiwiUGFzc3dvcmQiOiIkMmEkMTAkRmFCTjBTYVBROFVidlYydUVpS1p2dThiQ3BML1NmMmtPNlBxSTQ3SVVWQ2RMUGNjV3dhNnEiLCJpYXQiOjE2OTczNDQ2MDMsImV4cCI6MTY5NzM0NDkwM30.bVFrTx6unSPpozT6fKz_XuLa_-AlcZx3s08UTbcE3FM
+User-Role: Admin
 Content-Type: application/json
 
 {
-    "ProductType_Name": " "
+    "ProductType_Name": "eee"
 }
 
 ###
 
 GET http://localhost:3000/productTypes/get
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mjk5OTk5YjdiYmY0NWQzNzc4MWRmNCIsIlVzZXJfTmFtZSI6InNhaW50IiwiUGFzc3dvcmQiOiIkMmEkMTAkRmFCTjBTYVBROFVidlYydUVpS1p2dThiQ3BML1NmMmtPNlBxSTQ3SVVWQ2RMUGNjV3dhNnEiLCJpYXQiOjE2OTczNDUyOTgsImV4cCI6MTY5NzM0NTU5OH0.d0nrF5oijhx0UAQwvYC0NoryDmg77jNz1YpE39CUa7Y
+User-Role: User
 
 ###
 
@@ -60,10 +76,41 @@ Content-Type: application/json
 }
 
 ###
+
 POST http://localhost:3000/users/signin
 Content-Type: application/json
 
 {
-    "User_Name": "b630",
+    "User_Name": "saint",
     "Password": "1234"
 }
+
+### Admin
+
+POST http://localhost:3000/admins/signup
+Content-Type: application/json
+
+{
+    "Admin_Name": "admin1",
+    "Password": "1234"
+}
+
+### Admin Sign In
+
+POST http://localhost:3000/admins/signin
+Content-Type: application/json
+
+{
+    "Admin_Name": "admin1",
+    "Password": "1234"
+}
+
+### Test
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MjlhNGM0YjdiYmY0NWQzNzc4MWUwYSIsIlVzZXJfTmFtZSI6ImI2MzAiLCJQYXNzd29yZCI6IiQyYSQxMCRkMTZtQ2tDeTdITDZEdVpPL1RveFZPMkhMUlJlZ2xvUmtVQmdhQ0VDcmVJWDRJZGJFcDNTbSIsImlhdCI6MTY5NzMwNDQzNiwiZXhwIjoxNjk3MzA0NzM2fQ.8J1UifB_aH-7wIBXFjMpoyWUmpATLDXV8IKI1CPoTyg
+
+### TEST
+
+GET http://localhost:3000/productTypes/test
+User-Role: Admin
+
+###

@@ -23,11 +23,11 @@ const productSchema = new mongoose.Schema({
     },
     Product_Detail_Hot: {
         type: String,
-        require: true
+        required: true
     },
     Product_Price_Hot: {
         type: Number,
-        require: true
+        required: true
     },
     Product_Img_Hot: {
         type: String,
@@ -35,11 +35,11 @@ const productSchema = new mongoose.Schema({
     },
     Product_Detail_Cold: {
         type: String,
-        require: true
+        required: true
     },
     Product_Price_Cold: {
         type: Number,
-        require: true
+        required: true
     },
     Product_Img_Cold: {
         type: String,
@@ -47,11 +47,11 @@ const productSchema = new mongoose.Schema({
     },
     Product_Detail_Frappe: {
         type: String,
-        require: true
+        required: true
     },
     Product_Price_Frappe: {
         type: Number,
-        require: true
+        required: true
     },
     Product_Img_Frappe: {
         type: String,

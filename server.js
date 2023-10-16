@@ -38,6 +38,7 @@ expressApp.use('/products', require('./routes/products'))
 expressApp.use('/productTypes', require('./routes/productTypes'))
 expressApp.use('/users', require('./routes/users.js'))
 expressApp.use('/admins', require('./routes/admins.js'))
+expressApp.use('/myfavorites', require('./routes/myfavorites'))
 
 expressApp.listen(3000, function() {
     console.log('Server Started')

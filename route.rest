@@ -131,6 +131,26 @@ Content-Type: application/json
     "Password": "1234"
 }
 
+### My Favorite
+
+POST http://localhost:3000/myfavorites/create
+Content-Type: application/json
+
+{
+    "P_Id": "652cb81f42d9c672376c5fe0",
+    "P_Name": "กามู",
+    "P_Prefix": "เย็น",
+    "U_Id": "652cf294e368234d9a6e76b6"
+}
+
+###
+
+GET http://localhost:3000/myfavorites/get
+
+###
+
+GET  http://localhost:3000/myfavorites/get/uid/65299999b7bbf45d37781df4
+
 ### Test
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MjlhNGM0YjdiYmY0NWQzNzc4MWUwYSIsIlVzZXJfTmFtZSI6ImI2MzAiLCJQYXNzd29yZCI6IiQyYSQxMCRkMTZtQ2tDeTdITDZEdVpPL1RveFZPMkhMUlJlZ2xvUmtVQmdhQ0VDcmVJWDRJZGJFcDNTbSIsImlhdCI6MTY5NzMwNDQzNiwiZXhwIjoxNjk3MzA0NzM2fQ.8J1UifB_aH-7wIBXFjMpoyWUmpATLDXV8IKI1CPoTyg
 
@@ -139,4 +159,22 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MjlhNGM0YjdiYmY0
 GET http://localhost:3000/productTypes/test
 User-Role: Admin
 
-###
+### Mock-up Admin
+
+POST http://localhost:3000/admins/signup
+Content-Type: application/json
+
+{
+    "Admin_Name": "admin1",
+    "Password": "1234"
+}
+
+### Admin Sign In
+
+POST http://localhost:3000/admins/signin
+Content-Type: application/json
+
+{
+    "Admin_Name": "admin1",
+    "Password": "1234"
+}

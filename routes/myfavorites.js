@@ -4,7 +4,7 @@ const MyFavorite = require('../models/myfavorite');
 const authorization = require('../config/authorize');
 
 // Getting all
-router.get('/get', async (req, res) => {
+router.get('/get', authorization, async (req, res) => {
     try {
         const myfavorites = await MyFavorite.find()
         res.status(200).json(myfavorites);
@@ -14,17 +14,17 @@ router.get('/get', async (req, res) => {
 });
 
 // Getting All By U_Id
-router.get('/get/uid/:u_id', getMyFavoriteByUid, async (req, res) => {
+router.get('/get/uid/:u_id', authorization, getMyFavoriteByUid, async (req, res) => {
     res.json(res.myfavorites);
 });
 
 // Getting One
-router.get('/get/:id', getMyFavorite, (req, res) => {
+router.get('/get/:id', authorization, getMyFavorite, (req, res) => {
     res.json(res.myfavorite);
 });
 
 // Creating One
-router.post('/create', async (req, res) => {
+router.post('/create', authorization, async (req, res) => {
     const myfavorite = new MyFavorite({
         P_Id: req.body.P_Id,
         P_Name: req.body.P_Name,
@@ -40,7 +40,7 @@ router.post('/create', async (req, res) => {
 });
 
 // Updating One
-router.patch('/patch/:id', getMyFavorite, async (req, res) => {
+router.patch('/patch/:id', authorization, getMyFavorite, async (req, res) => {
     if (req.body.P_Id != null) {
         res.myfavorite.P_Id = req.body.P_Id
     }
@@ -63,7 +63,7 @@ router.patch('/patch/:id', getMyFavorite, async (req, res) => {
 });
 
 // Deleting One
-router.delete('/delete/:id', getMyFavorite, async (req, res) => {
+router.delete('/delete/:id', authorization, getMyFavorite, async (req, res) => {
     try {
         await res.myfavorite.deleteOne()
         res.json({ message: "Deleted Product" })
